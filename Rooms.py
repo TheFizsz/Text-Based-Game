@@ -1,6 +1,7 @@
 import Unit_Stats   #Import player abilities and Unit Statistics
 import Player
-
+import Boss_One_Stats
+import random
 loop_room = True;
 loop_turns = False;
 
@@ -8,6 +9,11 @@ warband_turn = True;
 
 warband_turn = False;
 boss_turn = False;
+
+#faction units
+empire_units = [ 'Warpriest', 'Bright Wizard', 'Witch Hunter', 'Foot Knight']
+woodelves_units = ['Dryad', 'Eternal Guard', 'Wildwood Ranger', 'Waystalker']
+
 
 initial_moves = ['a: Move into the house and take position for an ambush', 'b: Wait in the alley and take on the beast']
 
@@ -34,8 +40,8 @@ def RoomOne(tank, range, mage, damager_dealer):
       #If move a is selected, attack Vargheist
       if(initial_move_one == 'a'):
 
-          Unit_Stats.Vargheist_health -= ((Unit_Stats.footknight_dmg + 10) + (Unit_Stats.warpriest_dmg + 10))
-          Unit_Stats.Vargheist_dmg *= 2
+          Boss_One_Stats.Vargheist_health -= ((Unit_Stats.footknight_dmg + 10) + (Unit_Stats.warpriest_dmg + 10))
+          Boss_One_Stats.Vargheist_dmg *= 2
 
           print('')
           print(' You have selected ' + initial_moves[0])
@@ -44,7 +50,7 @@ def RoomOne(tank, range, mage, damager_dealer):
           print(' jump off the balcony dealing extra damage and stunning the foe. The ' + range + ' and ' + mage + ' begin to fire. But now the enemy has become berzerk')
           print(' increasing damage.')
           print('')
-          Unit_Stats.display_Boss_Stat()
+          Boss_One_Stats.display_Boss_Stat()
           boss_turn = True;
 
       #If move b is selected, then do this
@@ -59,16 +65,48 @@ def RoomOne(tank, range, mage, damager_dealer):
          #If it is the bosses turn
          if(boss_turn == True):
 
-           Unit_Stats.clawStrike(Unit_Stats.Vargheist_dmg)
-           Unit_Stats.Vargheist_dmg = 45
-
-           print('')
-           print(Unit_Stats.display_warband_health())
            boss_turn = False;
            warband_turn = True;
+
+           print('')
+           print('It is the bosses turn')
+
+           random_ability = 2#random.randint(0, 3)
+
+           if(random_ability == 0):
+
+               print('')
+               print('The Vargheist uses Claw Strike')
+
+               Boss_One_Stats.clawStrike(Boss_One_Stats.Vargheist_dmg)
+               Boss_One_Stats.Vargheist_dmg = 45
+
+           elif (random_ability == 1):
+               print('')
+
+               print('The Vargheist flaps its wings and slams to the ground stunning nearby units for one turn')
+
+
+           elif (random_ability == 2):
+
+               print('')
+               print('The Vargheist sweeps the nearby area causing penetrated damage to nearby units')
+
+               Boss_One_Stats.wingSwipe(empire_units[0], empire_units[3]);
+
+
+           print('')
+           print()
 
          #If it is the warband turn, choose what to do with units
          elif(warband_turn == True):
 
              #Call unit ability selection method
              Player.selectedUnit(tank, mage, range, damager_dealer);
+             warband_turn = False;
+             boss_turn = True;
+             print('It works')
+
+         else:
+
+             print('No one gets a turn')

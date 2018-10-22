@@ -1,29 +1,34 @@
 import Unit_Stats
 import Rooms
-
-
+import sys
 
 def selectedUnit(tank, mage, damage_dealer, range):
 
-   loop_unit_selection = True;
    damage_dealer_use = True;
    tank_use = True;
    mage_use = True;
    range_use = True;
+   loop_unit_selection = True;
 
-   while True:
+   while loop_unit_selection:
 
-    print('')
-    selectedUnit = raw_input(
-           'It is now your turn. What unit would you like to use? : ' + tank + ', ' + mage + ', ' + damage_dealer + ', ' + range)
+     """ if(loop_unit_selection):
 
-    #If player selects warpriest
+        break
+  
 
-    if (selectedUnit == 'Warpriest' and damage_dealer_use == False):
+     """
+     print('')
+     selectedUnit = raw_input('It is now your turn. What unit would you like to use? : ' + tank + ', ' + mage + ', ' + damage_dealer + ', ' + range)
+
+     #If player selects warpriest
+
+     if (selectedUnit == 'Warpriest' and damage_dealer_use == False):
+
         print('')
         print('You must wait for the next turn to use this unit')
 
-    if(selectedUnit == 'Warpriest' and damage_dealer_use == True):
+     if(selectedUnit == 'Warpriest' and damage_dealer_use == True):
 
         damage_dealer_use = False;
 
@@ -48,14 +53,14 @@ def selectedUnit(tank, mage, damage_dealer, range):
             print('')
             print('The Warpriest uses Hammer Strike')
 
-    if(selectedUnit == 'Warpriest' and damage_dealer_use == False):
+     if(selectedUnit == 'Warpriest' and damage_dealer_use == False):
 
         print('')
         print('You must wait for the next turn to use this unit')
 
 
     #If player selects foot knight
-    if (selectedUnit == 'Foot Knight' and tank_use):
+     if (selectedUnit == 'Foot Knight' and tank_use):
 
         tank_use = False;
 
@@ -79,12 +84,12 @@ def selectedUnit(tank, mage, damage_dealer, range):
         elif (selected_ability == 'Shield'):
             print('')
             print('The Foot Knight uses Shield')
-    elif (selectedUnit == 'Foot Knight' and tank_use == False):
+     elif (selectedUnit == 'Foot Knight' and tank_use == False):
 
         print('')
         print('You must wait for the next turn to use this unit')
 
-    if (selectedUnit == 'Bright Wizard' and mage_use == True):
+     if (selectedUnit == 'Bright Wizard' and mage_use == True):
 
         mage_use = False;
 
@@ -110,12 +115,12 @@ def selectedUnit(tank, mage, damage_dealer, range):
             print('')
             print('The Bright Wizard uses Flaming Sword')
 
-    elif (selectedUnit == 'Bright Wizard' and mage_use == False):
+     elif (selectedUnit == 'Bright Wizard' and mage_use == False):
 
         print('')
         print('You must wait for the next turn to use this unit')
 
-    if (selectedUnit == 'Witch Hunter' and range_use):
+     if (selectedUnit == 'Witch Hunter' and range_use):
 
         range_use = False;
 
@@ -140,23 +145,35 @@ def selectedUnit(tank, mage, damage_dealer, range):
             print('')
             print('The Witch Hunter uses Bleeding Strike')
 
-    elif (selectedUnit == 'Witch Hunter' and range_use == False):
+     elif (selectedUnit == 'Witch Hunter' and range_use == False):
 
         print('')
         print('You must wait for the next turn to use this unit')
 
-    print(range_use)
-    print(tank_use)
-    print(mage_use)
-    print(damage_dealer_use)
+     print('')
+     print('Witch Hunter: ' + str(range_use))
+     print('Foot Knight: ' + str(tank_use))
+     print('Bright Wizard: ' + str(mage_use))
+     print('War Priest: ' + str(damage_dealer_use))
 
-    #if all units have been used, end the turn
-    if(range_use == False and tank_use == False and mage_use == False and damage_dealer_use == False):
+     #if all units have been used, end the turn
+     if(range_use == False and tank_use == False and mage_use == False and damage_dealer_use == False):
 
+        raw_input('This is working')
         break
-        print(range_use)
-        print(tank_use)
-        print(mage_use)
-        print(damage_dealer_use)
+        print( 'Witch Hunter: ' + str(range_use))
+        print( 'War Priest: ' + str(tank_use))
+        print( 'Bright Wizard: ' + str(mage_use))
+        print( 'Foot Knight: ' + str(damage_dealer_use))
+        Rooms.boss_turn = True;
         Rooms.warband_turn = False;
         loop_unit_selection = False;
+     else:
+
+        print('This is not working')
+    
+
+
+
+
+

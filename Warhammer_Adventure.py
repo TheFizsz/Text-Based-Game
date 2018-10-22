@@ -50,11 +50,11 @@ while loop_game:
                 print_warband(woodelves_units)
                 print('Here is your warband: ' + str(woodelves_units))
 
-
   elif(ask_user_start == 'N'):
 
     print('')
     print('Au Revoir!')
+
 
   else:
 
