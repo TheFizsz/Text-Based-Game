@@ -9,6 +9,19 @@ empire_unit_stats = [
 
 ]
 
+#Warpriest ability stats
+heal_use = 3
+health_boost = 25
+dmg_boost_use = 3;
+dmg_boost = 10
+
+#foot knight ability stats
+shield_turn = 1;
+
+#witch hunter ability stats
+silver_ammo = 4;
+charge = 1;
+
 #warband health
 warpriest_health = int(empire_unit_stats[0][3])
 brightwizard_health = int(empire_unit_stats[1][3])
@@ -23,33 +36,16 @@ brightwizard_dmg = int(empire_unit_stats[1][0])
 witchhunter_dmg = int(empire_unit_stats[2][0])
 footknight_dmg = int(empire_unit_stats[3][0])
 
-
-def heal_warband(mage_hp, range_hp, tank_hp, damage_dealer_hp):
-
-  heal_boost = 25
-
-  mage_hp += heal_boost;
-  range_hp += heal_boost
-  tank_hp += heal_boost
-  damage_dealer_hp += heal_boost
-
-def for_sigmar(mage_hp, range_hp, tank_hp, damage_dealer_hp):
-
-    dmg_boost = 10
-
-    mage_hp += dmg_boost;
-    range_hp += dmg_boost;
-    tank_hp += dmg_boost;
-    damage_dealer_hp += dmg_boost;
+#warband defense
+warpriest_defense = int(empire_unit_stats[0][2])
+brightwizard_defense = int(empire_unit_stats[1][2])
+witchhunter_defense = int(empire_unit_stats[2][2])
+footknight_defense = int(empire_unit_stats[3][2])
 
 def hammer_strike():
 
     hammer_dmg = warpriest_dmg
-
     Boss_One_Stats.Vargheist_health -= warpriest_dmg;
-
-
-
 
 def display_warband_health():
 
@@ -100,6 +96,10 @@ def sword_swing():
 
     sword_dmg = footknight_dmg
     Boss_One_Stats.Vargheist_health -= sword_dmg
+
+
+
+
 
 woodelves_unit_stats = [
 
