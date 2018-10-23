@@ -1,5 +1,6 @@
 import Unit_Stats
 import Rooms
+import Boss_One_Stats
 import sys
 
 def selectedUnit(tank, mage, damage_dealer, range):
@@ -151,8 +152,6 @@ def selectedUnit(tank, mage, damage_dealer, range):
 
      if (selectedUnit == 'Bright Wizard' and mage_use == True):
 
-        mage_use = False;
-
         print('')
         print('You have selected the ' + selectedUnit)
 
@@ -166,14 +165,31 @@ def selectedUnit(tank, mage, damage_dealer, range):
             print('')
             print('The Bright Wizard uses Fireball')
 
+            #Call fireball dmg method
+            Unit_Stats.fire_ball()
+
+            mage_use = False;
+
         elif (selected_ability == 'Flamethrower'):
 
-            print('')
-            print('The Bright Wizard uses Flamethrower')
+            if(Unit_Stats.flame_thrower_turns > 0):
+
+                Unit_Stats.flame_thrower_turns -= 1;
+                print('')
+                print('The Bright Wizard uses Flamethrower dealing 9 damage for 3 turns')
+                mage_use = False;
+
+                Boss_One_Stats.Vargheist_health -= Unit_Stats.flame_thrower_damage;
+
+            elif(Unit_Stats.flame_thrower_turns < 0):
+
+                Unit_Stats.flame_thrower_turns = 0;
+                print('')
+                print('You can no longer use this abiltiy until the next turn')
 
         elif (selected_ability == 'Flaming Sword'):
             print('')
-            print('The Bright Wizard uses Flaming Sword')
+            print('The Bright Wizard uses Flaming Sword lowering the armor of the beast')
 
      elif (selectedUnit == 'Bright Wizard' and mage_use == False):
 

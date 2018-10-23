@@ -22,6 +22,12 @@ shield_turn = 1;
 silver_ammo = 4;
 charge = 1;
 
+#bright wizard abilitiy stats
+flame_thrower_turns = 3
+flame_thrower_damage = 9
+flame_thrower_initial_damage = 15
+fireball_dmg = 62;
+
 #warband health
 warpriest_health = int(empire_unit_stats[0][3])
 brightwizard_health = int(empire_unit_stats[1][3])
@@ -73,6 +79,10 @@ def display_brightwizard_abilities():
     print(empire_unit_stats[1][5] + ' - A lasting flame burning the enemy for 2 turns')
     print(empire_unit_stats[1][6] + ' - Strikes a flaming blade causing damage to enemy armor')
 
+def fire_ball():
+
+    fireball = fireball_dmg;
+    Boss_One_Stats.Vargheist_health -= fireball;
 
 def display_footknight_abilities():
 
