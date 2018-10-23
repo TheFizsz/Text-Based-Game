@@ -71,7 +71,7 @@ def RoomOne(tank, range, mage, damager_dealer):
            print('')
            print('It is the bosses turn')
 
-           random_ability = 2#random.randint(0, 3)
+           random_ability = random.randint(0, 3)
 
            if(random_ability == 0):
 
@@ -95,11 +95,10 @@ def RoomOne(tank, range, mage, damager_dealer):
                Boss_One_Stats.wingSwipe(empire_units[0], empire_units[3]);
 
 
-           print('')
-           print()
-
          #If it is the warband turn, choose what to do with units
          elif(warband_turn == True):
+
+             Unit_Stats.display_warband_health()
 
              #Call unit ability selection method
              Player.selectedUnit(tank, mage, range, damager_dealer);

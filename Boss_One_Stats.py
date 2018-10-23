@@ -31,10 +31,8 @@ def wingSwipe(nearby_unit_one, nearby_unit_two):
     if(nearby_unit_one == "Warpriest"):
 
       Unit_Stats.warpriest_health -= 20
-      print(Unit_Stats.warpriest_health)
-
 
     if(nearby_unit_two == "Foot Knight"):
 
       Unit_Stats.footknight_health -= 20
-      print(Unit_Stats.footknight_health)
+
