@@ -29,7 +29,6 @@ while loop_game:
     print(warhammer_factions)
     selected_faction = raw_input('Parfait! What faction would you like to play?')
 
-
     for faction in warhammer_factions:
 
         #Check selected faction

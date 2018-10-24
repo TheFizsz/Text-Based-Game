@@ -3,12 +3,18 @@ import Rooms
 import Boss_One_Stats
 import sys
 
+main_damage_dealer_use = True;
+main_tank_use = True;
+main_mage_use = True;
+main_range_use = True;
+
+
 def selectedUnit(tank, mage, damage_dealer, range):
 
-   damage_dealer_use = True;
-   tank_use = True;
-   mage_use = True;
-   range_use = True;
+   damage_dealer_use = main_damage_dealer_use
+   tank_use = main_tank_use
+   mage_use = main_mage_use
+   range_use = main_range_use
    loop_unit_selection = True;
 
    while loop_unit_selection:
@@ -31,8 +37,6 @@ def selectedUnit(tank, mage, damage_dealer, range):
 
         #Perform appropriate method to selected ability
         if(selected_ability == 'Heal'):
-
-
 
           if(Unit_Stats.heal_use > 0):
 
@@ -105,13 +109,15 @@ def selectedUnit(tank, mage, damage_dealer, range):
 
             if(Unit_Stats.charge > 0):
 
-              Unit_Stats.charge -= 0;
+              Unit_Stats.charge -= 1;
               tank_use = False;
               print('')
               print('The Foot Knight charges the Vargheist lowering its defense for one turn')
-              #Create method
+              Unit_Stats.Charge()
 
             elif(Unit_Stats.charge < 0):
+
+              Unit_Stats.charge = 0;
 
               print('')
               print('You are out of charges')
@@ -211,7 +217,7 @@ def selectedUnit(tank, mage, damage_dealer, range):
             if(Unit_Stats.silver_ammo > 0):
 
                 Unit_Stats.silver_ammo -= 1;
-
+                Unit_Stats.silver_shot()
                 print('')
                 print('The Witch Hunter uses Silver Bullet dealing 40 dmg to health ignoring armor')
                 print('')
@@ -229,9 +235,24 @@ def selectedUnit(tank, mage, damage_dealer, range):
             print('')
             print('The Witch Hunter uses Axe Strike')
 
-        elif (selected_ability == 'Hammer Strike'):
-            print('')
-            print('The Witch Hunter uses Bleeding Strike')
+            Unit_Stats.axe_strike()
+
+        elif (selected_ability == 'Bleeding Strike'):
+
+            if(Unit_Stats.bleeding_turn > 0):
+
+                Unit_Stats.bleeding_turn -= 1;
+                range_use = False;
+                print('')
+                print('The Witch Hunter uses Bleeding Strike causing the enemy to bleed 20 dmg for 3 turns')
+
+            elif(Unit_Stats.bleeding_turn < 0):
+
+                Unit_Stats.bleeding_turn = 0;
+                range_use = True;
+                print('You are out of bleeding uses')
+
+
 
      elif (selectedUnit == 'Witch Hunter' and range_use == False):
 
@@ -247,7 +268,6 @@ def selectedUnit(tank, mage, damage_dealer, range):
      #if all units have been used, end the turn
      if(range_use == False and tank_use == False and mage_use == False and damage_dealer_use == False):
 
-        raw_input('This is working')
         break
         print( 'Witch Hunter: ' + str(range_use))
         print( 'War Priest: ' + str(tank_use))
@@ -257,9 +277,6 @@ def selectedUnit(tank, mage, damage_dealer, range):
         Rooms.warband_turn = False;
         loop_unit_selection = False;
 
-     else:
-
-        print('This is not working')
     
 
 

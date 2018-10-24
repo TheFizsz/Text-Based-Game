@@ -1,4 +1,5 @@
 import Unit_Stats
+import Player
 
 Vargheist_stats = [45, 0, 15, 1400]
 Vargheist_abilities = ['Claw Strike', 'Sky Pound', 'Wing Wipe']
@@ -35,4 +36,13 @@ def wingSwipe(nearby_unit_one, nearby_unit_two):
     if(nearby_unit_two == "Foot Knight"):
 
       Unit_Stats.footknight_health -= 20
+
+def ground_stun(nearby_unit_one, nearby_unit_two):
+
+    if(nearby_unit_one == "Warpriest"):
+
+      Player.main_damage_dealer_use = False;
+
+    if(nearby_unit_two == "Foot Knight"):
+        Player.main_tank_use = False;
 

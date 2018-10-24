@@ -71,6 +71,8 @@ def RoomOne(tank, range, mage, damager_dealer):
            print('')
            print('It is the bosses turn')
 
+           Boss_One_Stats.display_Boss_Stat()
+
            random_ability = random.randint(0, 3)
 
            if(random_ability == 0):
@@ -85,7 +87,7 @@ def RoomOne(tank, range, mage, damager_dealer):
                print('')
 
                print('The Vargheist flaps its wings and slams to the ground stunning nearby units for one turn')
-
+               Boss_One_Stats.ground_stun(empire_units[0], empire_units[3])
 
            elif (random_ability == 2):
 

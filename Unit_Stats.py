@@ -1,4 +1,5 @@
 import Boss_One_Stats
+import Rooms
 
 empire_unit_stats = [
 
@@ -17,10 +18,12 @@ dmg_boost = 10
 
 #foot knight ability stats
 shield_turn = 1;
+charge = 1;
 
 #witch hunter ability stats
 silver_ammo = 4;
-charge = 1;
+bleeding_turn = 3;
+bleeding_dmg = 20;
 
 #bright wizard abilitiy stats
 flame_thrower_turns = 3
@@ -48,10 +51,14 @@ brightwizard_defense = int(empire_unit_stats[1][2])
 witchhunter_defense = int(empire_unit_stats[2][2])
 footknight_defense = int(empire_unit_stats[3][2])
 
+def Charge():
+
+  Rooms.boss_turn = False;
+
 def hammer_strike():
 
     hammer_dmg = warpriest_dmg
-    Boss_One_Stats.Vargheist_health -= warpriest_dmg;
+    Boss_One_Stats.Vargheist_health -= hammer_dmg;
 
 def display_warband_health():
 
@@ -108,7 +115,17 @@ def sword_swing():
     Boss_One_Stats.Vargheist_health -= sword_dmg
 
 
+def silver_shot():
 
+    Boss_One_Stats.Vargheist_health -= 40
+
+def axe_strike():
+
+    Boss_One_Stats.Vargheist_health -= witchhunter_dmg
+
+def axe_strike():
+
+    Boss_One_Stats.Vargheist_health -= witchhunter_dmg
 
 
 woodelves_unit_stats = [
