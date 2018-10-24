@@ -1,0 +1,5 @@
+This program is a text based/roleplay mini game that takes place in the universe called 'Warhammer'. You play as the Empire and are sent by the Emperor to investigate a warpstone meteor
+that crashed in the city. While it is certain that the Vampire Counts have taken over the city. You must find other Ostermark guards and gather a force to hold a section of the city while Middenland 
+sends a crusade to take the settlement. 'The Emperor has commanded you, do not fail him' - Reiksguard Marshal Trenkenhoff
+
+This program is composed of various concepts such as Strings, variables, conditions, classes, for loops, operators, and functions.
