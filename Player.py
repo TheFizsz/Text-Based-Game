@@ -23,7 +23,6 @@ def selectedUnit(tank, mage, damage_dealer, range):
      selectedUnit = raw_input('It is now your turn. What unit would you like to use? : ' + tank + ', ' + mage + ', ' + damage_dealer + ', ' + range)
 
      #If player selects warpriest
-
      if(selectedUnit == 'Warpriest' and damage_dealer_use == True):
 
         print('')
@@ -88,6 +87,11 @@ def selectedUnit(tank, mage, damage_dealer, range):
             print('The Warpriest uses Hammer Strike dealing 95 dmg')
             Unit_Stats.hammer_strike()
 
+     if(selectedUnit == 'Warpriest' and Unit_Stats.warpriest_health == 0):
+
+         Unit_Stats.warpriest_health = 0; #Health stays at zero
+         print('This unit is dead and can longer be used')
+
      #Disable selection for unit once selected again in the same turn
      if(selectedUnit == 'Warpriest' and damage_dealer_use == False):
 
@@ -150,11 +154,20 @@ def selectedUnit(tank, mage, damage_dealer, range):
                 print('You are out of shield boosts')
                 shield_turn = 0;
 
+     if (selectedUnit == 'Foot Knight' and Unit_Stats.footknight_health == 0):
+
+         Unit_Stats.footknight_health = 0;  # Health stays at zero
+         print('This unit is dead')
 
      elif (selectedUnit == 'Foot Knight' and tank_use == False):
 
         print('')
         print('You must wait for the next turn to use this unit')
+
+     if (selectedUnit == 'Bright Wizard' and Unit_Stats.brightwizard_health == 0):
+
+         Unit_Stats.brightwizard_health = 0;  # Health stays at zero
+         print('This unit is dead')
 
      if (selectedUnit == 'Bright Wizard' and mage_use == True):
 
@@ -201,6 +214,11 @@ def selectedUnit(tank, mage, damage_dealer, range):
 
         print('')
         print('You must wait for the next turn to use this unit')
+
+     if (selectedUnit == 'Witch Hunter' and Unit_Stats.witchhunter_health == 0):
+
+         Unit_Stats.footknight_health = 0;  # Health stays at zero
+         print('This unit is dead')
 
      if (selectedUnit == 'Witch Hunter' and range_use):
 
@@ -252,7 +270,17 @@ def selectedUnit(tank, mage, damage_dealer, range):
                 range_use = True;
                 print('You are out of bleeding uses')
 
+     if(selectedUnit != 'Witch Hunter' and selectedUnit != 'Warpriest' and selectedUnit != 'Foot Knight' and selectedUnit != 'Bright Wizard'):
 
+         print('')
+         print('Input was invalid please try again')
+
+     #If the entire warband is dead, end game
+     if(Unit_Stats.warpriest_health == 0 and Unit_Stats.witchhunter_health == 0 and Unit_Stats.footknight_health == 0 and Unit_Stats.brightwizard_health == 0):
+
+         print('')
+         print('The beast was too much for your warband and claims another victim in the City of The Damned.')
+         sys.exit()
 
      elif (selectedUnit == 'Witch Hunter' and range_use == False):
 

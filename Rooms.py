@@ -14,9 +14,6 @@ boss_turn = False;
 empire_units = [ 'Warpriest', 'Bright Wizard', 'Witch Hunter', 'Foot Knight']
 woodelves_units = ['Dryad', 'Eternal Guard', 'Wildwood Ranger', 'Waystalker']
 
-
-initial_moves = ['a: Move into the house and take position for an ambush', 'b: Wait in the alley and take on the beast']
-
 #Roome one
 def RoomOne(tank, range, mage, damager_dealer):
 
@@ -31,33 +28,18 @@ def RoomOne(tank, range, mage, damager_dealer):
       print('')
       print(' Near you is a house with a balcony and the alley containing cover.')
       print('')
-
-      #Ask user what first move to make
-      initial_move_one = raw_input('What would you like to do: ' + str(initial_moves))
+      print(' Your Warband has entered the house. Each one of them quickly gets into position to strike the foul beast. The ' + tank + ' and ' + ' the ' + damager_dealer)
+      print(' jump off the balcony dealing extra damage and stunning the foe. The ' + range + ' and ' + mage + ' begin to fire. But now the enemy has become berzerk')
+      print(' increasing damage.')
+      print('')
 
       loop_turns = True;
 
-      #If move a is selected, attack Vargheist
-      if(initial_move_one == 'a'):
+      #ambush dmg boost
+      Boss_One_Stats.Vargheist_health -= ((Unit_Stats.footknight_dmg + 10) + (Unit_Stats.warpriest_dmg + 10))
+      Boss_One_Stats.Vargheist_dmg *= 2
 
-          Boss_One_Stats.Vargheist_health -= ((Unit_Stats.footknight_dmg + 10) + (Unit_Stats.warpriest_dmg + 10))
-          Boss_One_Stats.Vargheist_dmg *= 2
-
-          print('')
-          print(' You have selected ' + initial_moves[0])
-          print('')
-          print(' Your Warband has entered the house. Each one of them quickly gets into position to strike the foul beast. The ' + tank + ' and ' + ' the ' + damager_dealer)
-          print(' jump off the balcony dealing extra damage and stunning the foe. The ' + range + ' and ' + mage + ' begin to fire. But now the enemy has become berzerk')
-          print(' increasing damage.')
-          print('')
-          Boss_One_Stats.display_Boss_Stat()
-          boss_turn = True;
-
-      #If move b is selected, then do this
-      elif(initial_move_one == 'b'):
-
-          print('')
-          #Unit_Stats.heal_warband()
+      boss_turn = True;
 
       #After turn, begin turn system
       while loop_turns:
@@ -75,6 +57,7 @@ def RoomOne(tank, range, mage, damager_dealer):
 
            random_ability = random.randint(0, 3)
 
+           #determine the boss ability randomly
            if(random_ability == 0):
 
                print('')
@@ -96,6 +79,13 @@ def RoomOne(tank, range, mage, damager_dealer):
 
                Boss_One_Stats.wingSwipe(empire_units[0], empire_units[3]);
 
+           #If boss dies exist game
+           if(Boss_One_Stats.Vargheist_health == 0):
+
+               print('')
+               print('Through persistence and with the blessing of Sigmar, the warband destroys ths taint; beridding Mordheim of another horror. But the battle is not yet won,')
+               print('A warp asteroid storm befalls upon the outskirts of the city and with it, hordes of Skaven have arrived alongside with Middenland forces to claim the power.')
+               print('This battle is not yet to be won. Sigmar save us all...')
 
          #If it is the warband turn, choose what to do with units
          elif(warband_turn == True):

@@ -2,7 +2,7 @@ import Rooms #Import rooms
 
 
 #faction options
-warhammer_factions = ['The Empire','Wood Elves']
+warhammer_factions = ['The Empire']
 
 #faction units
 empire_units = [ 'Warpriest', 'Bright Wizard', 'Witch Hunter', 'Foot Knight']
@@ -24,30 +24,13 @@ while loop_game:
   #iF yes
   if(ask_user_start == 'Y'):
 
+            print('')
+            print('You will play as ' + warhammer_factions[0])
+            print('')
+            print_warband(empire_units)
+            Rooms.RoomOne(empire_units[3], empire_units[2],empire_units[1], empire_units[0])
 
-    #Ask what faction to play
-    print(warhammer_factions)
-    selected_faction = raw_input('Parfait! What faction would you like to play?')
 
-    for faction in warhammer_factions:
-
-        #Check selected faction
-        if(selected_faction == faction):
-
-            print('You have selected ' + faction)
-
-            #If the empire, start assigned room
-            if(faction == 'The Empire'):
-
-                print('')
-                print_warband(empire_units)
-                Rooms.RoomOne(empire_units[3], empire_units[2],empire_units[1], empire_units[0])
-
-            #If elves start assigned room
-            elif(faction == 'Wood Elves'):
-
-                print_warband(woodelves_units)
-                print('Here is your warband: ' + str(woodelves_units))
 
   elif(ask_user_start == 'N'):
 
